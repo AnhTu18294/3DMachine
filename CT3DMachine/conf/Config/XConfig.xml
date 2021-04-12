@@ -1,0 +1,21 @@
+<Configuration xmlns="http://schemas.datacontract.org/2004/07/XRAYWorX.Config" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <Context>
+    <AdvancedMode>true</AdvancedMode>
+    <ShowPressure>true</ShowPressure>
+  </Context>
+  <XRayDlgSettings>  
+    <IsResizable>false</IsResizable>
+    <Location xmlns:a="http://schemas.datacontract.org/2004/07/System.Drawing">
+      <a:x>0</a:x>
+      <a:y>0</a:y>
+    </Location>
+    <Offset xmlns:a="http://schemas.datacontract.org/2004/07/System.Drawing">
+      <a:x>0</a:x>
+      <a:y>29</a:y>
+    </Offset>
+    <StoredSize xmlns:a="http://schemas.datacontract.org/2004/07/System.Drawing">
+      <a:height>620</a:height>
+      <a:width>285</a:width>
+    </StoredSize>
+  </XRayDlgSettings>
+</Configuration>

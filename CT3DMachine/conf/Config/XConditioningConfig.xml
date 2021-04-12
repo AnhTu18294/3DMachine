@@ -1,0 +1,13 @@
+<ConditioningConfig xmlns="http://schemas.datacontract.org/2004/07/XRAYWorX.Config" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Duration>PT6H</Duration>
+	<EmissionCurrent>50</EmissionCurrent>
+	<FilAdjEnabled>false</FilAdjEnabled>
+	<FilAdjInterval>PT1H</FilAdjInterval>
+	<HighVoltage>163</HighVoltage>
+	<LeakCurTestDuration>PT1M</LeakCurTestDuration>
+	<LeakCurTestEnabled>false</LeakCurTestEnabled>	
+	<LeakCurTestInterval>PT2H</LeakCurTestInterval>
+	<MaxFlashOvers>100</MaxFlashOvers>
+	<SamplePeriod>PT1M</SamplePeriod>
+	<TimeBetwFlashOvers>PT2H</TimeBetwFlashOvers>
+</ConditioningConfig>

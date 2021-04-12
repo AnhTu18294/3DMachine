@@ -1,0 +1,15 @@
+<BaseConfiguration xmlns="http://schemas.datacontract.org/2004/07/XRAYWorXBase.Config"
+                   xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <MessageBoxConfig>
+    <RetentionTime>P20D</RetentionTime>
+    <MaxLines>1000</MaxLines>
+  </MessageBoxConfig>
+  <PviConnInfo>
+    <IpAdress>127.0.0.1</IpAdress>
+    <PlcInitWaitDelay>70000</PlcInitWaitDelay>
+    <RemotePort>11160</RemotePort>
+  </PviConnInfo>
+  <XLogConfig>
+    <MaxBytes>10000000</MaxBytes>
+  </XLogConfig>
+</BaseConfiguration>

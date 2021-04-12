@@ -1,0 +1,26 @@
+﻿<Window x:Class="CT3DMachine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CT3DMachine"
+        xmlns:CustomizeControl="clr-namespace:CT3DMachine"
+        xmlns:Customize3DControl="clr-namespace:CT3DMachine.View3D"
+        mc:Ignorable="d"
+        Title="CT 3D Machine" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Customize3DControl:GLView3D x:Name="glView3D" Grid.Column="0" Grid.Row="0"></Customize3DControl:GLView3D>
+        <Grid  Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <CustomizeControl:CT3DControlView x:Name="ct3dControl" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFC1C1C1" />
+            <CustomizeControl:MachineControl x:Name="machineControl" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#a4a4a4"/>
+        </Grid>
+    </Grid>
+</Window>

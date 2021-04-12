@@ -1,0 +1,10 @@
+*/data
+*/bin
+*/obj
+packages
+.vs
+./logs
+./libs
+./obj
+./bin
+CT3DMachine/logs

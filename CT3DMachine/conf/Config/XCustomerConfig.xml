@@ -1,0 +1,13 @@
+<CustomerConfig xmlns="http://schemas.datacontract.org/2004/07/XRAYWorX.Config" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <PathToIcon>.\Logos\Icon.ico</PathToIcon>
+  <PathToLogo256x85>.\Logos\Logo Main.*</PathToLogo256x85>
+  <PathToLogo350x117>.\Logos\Logo About.*</PathToLogo350x117>
+  <StandbySymbol>Power</StandbySymbol>
+  <DisplayCustomInfo>false</DisplayCustomInfo>
+  <CompanyInfo>
+    <Name>X-RAY WorX GmbH</Name>
+    <Phone>+49 (0)5131 48712 80</Phone>
+    <Fax>+49 (0)5131 48712 88</Fax>
+    <Web>www.x-ray-worx.com</Web>
+  </CompanyInfo>
+</CustomerConfig>

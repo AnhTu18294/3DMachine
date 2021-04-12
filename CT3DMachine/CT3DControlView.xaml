@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="CT3DMachine.CT3DControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CT3DMachine"
+             xmlns:CustomizeXRay="clr-namespace:CT3DMachine.XRayControl"
+             xmlns:CustomizeMotion="clr-namespace:CT3DMachine.MotionControl"
+             xmlns:CustomizeTurntable="clr-namespace:CT3DMachine.TurntableControl"
+             xmlns:CustomizeDetector="clr-namespace:CT3DMachine.DetectorControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="864" d:DesignWidth="480">
+    <Grid>
+        <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="scan3DController">
+                <Expander x:Name="expXRayCotroller" Header="Điều khiển máy phát tia X" IsExpanded="True" Background="{x:Null}" FontSize="14" FontWeight="Bold">
+                    <CustomizeXRay:XRayMonitor x:Name="xRayControl" Height="400" FontWeight="Normal"></CustomizeXRay:XRayMonitor>
+                    <!--<CustomizeXRay:XRayControl x:Name="xRayControl" Height="560"></CustomizeXRay:XRayControl>-->
+                </Expander>
+                <Expander x:Name="expMotionCotroller" Header="Thiết lập cấu hình chụp" IsExpanded="True" Background="{x:Null}" FontSize="14" FontWeight="Bold">
+                    <!--<CustomizeMotion:MotionControl x:Name="motionControl" Height="300"></CustomizeMotion:MotionControl>-->
+                    <CustomizeMotion:MotionMonitor x:Name="motionControl" Height="280" FontWeight="Normal"></CustomizeMotion:MotionMonitor>
+                </Expander>
+                <Expander x:Name="expTurntableCotroller" Header="Điều khiển quá trình quét" IsExpanded="True" Background="{x:Null}" FontSize="14" FontWeight="Bold">
+                    <!--<CustomizeTurntable:TurntableControl x:Name="turntableControl" Height="300"></CustomizeTurntable:TurntableControl>-->
+                    <CustomizeTurntable:TurnableMonitor x:Name="turntableControl" Height="150" FontWeight="Normal"></CustomizeTurntable:TurnableMonitor>
+                </Expander>
+                <Expander x:Name="expDetectorCotroller" Header="Thiết lập ma trận đầu dò" IsExpanded="True" Background="{x:Null}" FontSize="14" FontWeight="Bold">
+                    <CustomizeDetector:DetectorMonitor x:Name="detectorControl" Height="280" FontWeight="Normal"></CustomizeDetector:DetectorMonitor>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

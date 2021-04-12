@@ -1,0 +1,597 @@
+//V2.14 2017-04-10
+//Fehlerliste;;
+//SYS;;
+1;Init - Init failed;Restart PLC
+2;Reading Sys-Init failed;Restart PLC
+3;Reading Data modules incomplete;Restart PLC
+4;Reading characteristic curves incomplete;Restart PLC
+5;Error Search Data of SysInit;Restart PLC
+6;Error Write CSV of SysInit;Restart PLC
+7;Error Init of PCInterface;Restart PLC
+8;Initialisation of CfgHandler failed;Restart PLC
+10;Initialisation of Warning lights failed;Restart PLC
+11;Warning light no. 1 is broken;Check Warning light, change if necessary
+12;Warning light no. 2 is broken;Check Warning light, change if necessary
+13;Warning light no. 3 is broken;Check Warning light, change if necessary
+14;Warning light channel 1 defect;
+15;Warning light channel 2 defect;
+16;Warning light channel 3 defect;
+20;Initialisation of Refresh failed;Restart PLC
+21;Initialisation of Filament Adjust failed;Restart PLC
+22;Initialisation of StartingXfailed;Restart PLC
+23;Initialisation of Centering failed;Restart PLC
+24;Initialisation of TargetAdjust failed;Restart PLC
+25;Initialisation of Target Control failed;Restart PLC
+26;Initialisation of Cooling Control failed;Restart PLC
+27;Cooling is broken (obsolete);Check  Cooling, if necessary
+28;Cooling Variable not found;Restart PLC
+29;Cooling error by allocating memory;Restart PLC
+30;Error cooling off.;Switch on cooling.
+31;Reading SysConf failed;Restart PLC
+32;Error Search Data of SysConf ;Restart PLC
+33;Error Write CSV of SysConf;Restart PLC
+34;Path to Head not found;Restart PLC
+35;Initialisation of StandBy failed;Restart PLC
+36;Initialisation of HardwareSupervisor failed;Restart PLC
+37;Initialisation fof Conditioning failed;Restart PLC
+38;Initialisation of Prewarning failed;Restart PLC
+39;Initialisation of SerialnumberCheck failed;Restart PLC
+40;Initialisation of Leak Current Test failed;Restart PLC
+41;Cooling 1 is broken;Check cooling
+42;Cooling 2 is broken;Check cooling
+43;Tube configuration mismatch;Check cooling entries
+50;Tubehead configuration mismatch;Check SysConf
+51;Tube head configuration mismatch;Check TubeheadConfig and Optic folders
+52;Tube head configuration mismatch or cabel W1.2 to tube head not connected;
+101;System variable not found;Restart PLC
+102;System  error by allocating memory;Restart PLC
+103;Error SearchData of System;Restart PLC
+104;Error WriteData of System;Restart PLC
+105;Error ReadFile of System;Restart PLC
+106;Filament Adjust: Timeout;
+107;Error SearchData of Cooling;
+108;Error WriteData of Cooling;
+109;Error ReadFile of Cooling;
+110;CPUConfig variable not found;Restart PLC
+111;CPUConfig error by allocating memory;Restart PLC
+112;Error SearchData of CPUConfig;Restart PLC
+113;Error WriteData of CPUConfig;Restart PLC
+114;Error ReadFile of CPUConfig;Restart PLC
+115;TargetPowCounter variable not found;Restart PLC
+116;TargetPowCounter error by allocating memory;Restart PLC
+117;Error SearchData of TargetPowCounter;Restart PLC
+118;Error WriteData of TargetLifetime;Restart PLC
+119;Error ReadFile of TargetLifetime;Restart PLC
+120;No File CPUConfig found;Check values in CPUConfig
+121;No File CoolingDM1 found;Check values in CoolingDM1
+122;No File ModeDM1 found;Check values in ModeDM1
+123;No File VacuumDM1 found;Check values in VacuumDM1
+124;No File HTGDM1 found;Check values in HTGDM1
+125;No File TargetDM1 found;Check values in TargetDM1
+126;No File ApertureDM0 found;Check values in ApertureDM0
+127;No File ApertureDM1 found;Check values in ApertureDM1
+128;No File FocusDM1 found;Check values in FocusDM1
+129;No File CondenserDM1 found;Check values in CondenserDM1
+130;No File CenterDM2 found;Check values in CenterDM2
+131;No File CenterDM found;Check values in CenterDM
+132;No File SystemDM found;Check values in SystemDM
+133;No File TubeDM found;Check values in TubeDM
+134;File CoolingDM1 not correct;Check values in CoolingDM1
+135;File ModeDM1 not correct;Check values in ModeDM1
+136;File VacuumDM1 not correct;Check values in VacuumDM1
+137;File HTGDM1 not correct;Check values in HTGDM1
+138;File TargetD1M not correct;Check values in TargetDM1
+139;File ApertureDM0 not correct;Check values in ApertureDM0
+140;File ApertureDM1 not correct;Check values in ApertureDM1
+141;File FocusDM1 not correct;Check values in FocusDM1
+142;File CondenserDM1 not correct;Check values in CondenserDM1
+143;File CenterDM2 not correct;Check values in CenterDM2
+144;File CenterDM1 not correct;Check values in CenterDM1
+145;File SystemDM1 not correct;Check values in SystemDM1
+146;File TubeDM1 not correct;Check values in TubeDM1
+147;File SysInit not correct;Check values in SysInit
+148;Check Filament: Timeout;Check Centering
+149;Leak Current is over maximum;Clean Tube
+150;File AutoFuncDM1 not correct;Check values in AutoFuncDM1
+151;No File AutoFuncDM1 found;Check values in AutoFuncDM1
+152;Reading AutoFuncDM1 failed;Restart PLC
+153;Error WriteData of AutoFuncDM1;Restart PLC
+154;Error SearchData of AutoFuncDM1;Restart PLC
+155;File MaintenanceDM1 not correct;Check values in MaintenanceDM1
+156;No File MaintenanceDM1 found;Check values in MaintenanceDM1
+157;Reading MaintenanceDM1 failed;Restart PLC
+158;Error WriteData of MaintenanceDM1;Restart PLC
+159;Error SearchData of MaintenanceDM1;Restart PLC
+160;Invalid mode number demanded;
+161;Filament Correction Factor is not in range;Repeat Filament Adjust
+162;Filament Correction Factor is not in range;Repeat Filament Adjust
+170;File Statistics not correct;Check values in Statistics
+171;No File Statistics found;Check values in Statistics
+172;Reading Statistics failed;Restart PLC
+173;Error WriteData of Statistics;Restart PLC
+174;Error SearchData of Statistics;Restart PLC
+175;File CPUConfig not correct;Check values in CPUConfig
+176;File SysConf not correct;Check values in SysConf
+177;No File SysConf found;Check values in SysConf
+178;No File SysInit found;
+179;Error SearchData of SysInit;Restart PLC
+180;Error WriteData of SysInit;Restart PLC
+201;Hash value for AutoFuncDM1 is not correct;
+202;Hash value for CPUConfig is not correct;
+203;Hash value for HTGDM1 is not correct;
+204;Hash value for MaintenanceDM1 is not correct;
+205;Hash value for SysConf is not correct;
+206;Hash value for VacuumDM1 is not correct;
+207;Hash value for ApertureDM0 is not correct;
+208;Hash value for ApertureDM1 is not correct;
+209;Hash value for CenterDM1 is not correct;
+210;Hash value for CenterDM2 is not correct;
+211;Hash value for CondenserDM1 is not correct;
+212;Hash value for CoolingDM1 is not correct;
+213;Hash value for FocusDM1 is not correct;
+214;Hash value for RefreshRampingDM is not correct;
+215;Hash value for SysInit is not correct;
+216;Hash value for SystemDM1 is not correct;
+217;Hash value for TubeDM1 is not correct;
+218;Hash value for DefocusTab on position 1 is not correct;
+219;Hash value for DefocusTab on position 2 is not correct;
+220;Hash value for DefocusTab on position 3 is not correct;
+221;Hash value for DefocusTab on position 4 is not correct;
+222;Hash value for DefocusTab on position 5 is not correct;
+223;Hash value for DefocusTab on position 6 is not correct;
+224;Hash value for DefocusTab on position 7 is not correct;
+225;Hash value for DefocusTab on position 8 is not correct;
+226;Hash value for DefocusTab on position 9 is not correct;
+227;Hash value for DefocusTab on position 10 is not correct;
+228;Hash value for TargetDM1 is not correct;
+229;Hash value for CenteringTab1 in mode 1 is not correct;
+230;Hash value for CenteringTab2 in mode 1 is not correct;
+231;Hash value for CondenserTab1 in mode 1 is not correct;
+232;Hash value for FocusTab1 in mode 1 is not correct;
+233;Hash value for ModeDM1 in mode 1 is not correct;
+234;Hash value for CenteringTab1 in mode 2 is not correct;
+235;Hash value for CenteringTab2 in mode 2 is not correct;
+236;Hash value for CondenserTab1 in mode 2 is not correct;
+237;Hash value for FocusTab1 in mode 2 is not correct;
+238;Hash value for ModeDM1 in mode 2 is not correct;
+239;Hash value for CenteringTab1 in mode 3 is not correct;
+240;Hash value for CenteringTab2 in mode 3 is not correct;
+241;Hash value for CondenserTab1 in mode 3 is not correct;
+242;Hash value for FocusTab1 in mode 3 is not correct;
+243;Hash value for ModeDM1 in mode 3 is not correct;
+244;Hash value for FilamentLifetimeTable is not correct;
+245;Hash value for Statistics is not correct;
+246;Hash value for TargetLifetime is not correct;
+247;Hash value for TubeheadConfig is not correct;
+501;Not enough vacuum for StartingX;Wait until vaccum is OK, check leak tightness
+502;Interlock unclosed during StartingX;Close Door
+503;Not enough Vacuum for Refresh;Wait until vaccum is OK, check leak tightness
+504;Interlock unclosed during Refresh;Close Door
+505;Not enough vacuum for Filament Adjust;Wait until vaccum is OK, check leak tightness
+506;Interlock unclosed during FilamentAdjust;Close Door
+507;Reached voltage during Refresh is lower than needed voltage for Filament Adjust;Repeat Refresh
+508;Not engough vacuum for Centering All;Wait until vaccum is OK, check leak tightness
+509;Interlock unclosed during Centering All;Close Door
+510;Reached voltage during Refresh is lower than the minimum voltage for Centering All;Repeat Refresh
+511;Not enough vacuum for Centering Active;Wait until vaccum is OK, check leak tightness
+512;Interlock unclosed during Centering Active;Close Door
+513;Reached voltage during Refresh is lower than the minimum voltage for Centering Active;Repeat Refresh
+514;Not enough vacuum for XRayON;Wait until vaccum is OK, check leak tightness
+515;Interlock unclosed during XRayOn;Close Door
+516;Reached voltage during Refresh is lower than the minimum voltage for XRayON;Repeat Refresh
+517;StartUp aborted;Restart StartUp
+518;Refresh expired;Repeat Refresh procedure
+519;Filament Adjust expired;Repeat Filament Adjust procedure
+520;Centering expired;Repeat Centering procedure
+521;StartingX expired;Executing StartX required for further operating
+522;Cooling off.;Check or switch on cooling.
+523;New Filament detected at last Filament Adjust; Repeat Filament Adjust procedure
+524;Locking DefocussingTable change due to X-ray on;Switch off X-ray
+525;Invalid DefocussingTable index;
+551;Locking Refresh due to configured Hand-held controller;Press Calibrate on Hand-held controller to start Refresh if required
+552;Locking FilamentAdjust due to configured Hand-held controller;Press Calibrate on Hand-held controller to start FilamentAdjust if required
+553;Locking Centering Active due to configured Hand-held controller;Press Calibrate on Hand-held controller to start Centering Active if required
+554;Locking Centering All due to configured Hand-held controller;Press Calibrate on Hand-held controller to start Centering All if required
+555;Locking StartUp due to configured Hand-held controller;Press Calibrate on Hand-held controller to start StartUp if required
+556;Locking XRayOn due to configured Hand-held controller;Press XRayOn on Hand-held controller
+557;Locking Conditioning due to configured Hand-held controller;
+558;Locking Leakage Current Test due to configured Hand-held controller;
+559;Locking Wobble due to configured Hand-held controller;
+570;Hand-held controller not configured or not properly connected;Check configuration and/or connection
+580;Switched to Cold-StandBy due to not enough Vacuum for Active-StandBy;
+581;Switched to Cold-StandBy due to unclosed Interlock;
+582;Switched to Cold-StandBy due to expired Refresh;
+583;Switched to Cold-StandBy due to too many Flashovers;
+584;Switched to Cold-StandBy due to a generator error;More information in MessageBox
+585;Switched off by StandBy;
+586;Switched to Cold-StandBy due to too old PCInterface version;
+600;License key is invalid; Install a new License
+601;Unknown remaining time; Install a new License
+602;Unknown Command Specifier; Install a new License
+640;Switched off by interlock;
+650;Switched off by watchdog;Check Ethernet connection or PCInterface version
+660;Reading IP address failed;
+661;Setting IP address failed;Check IP address
+701;File RefreshRampingDM not correct;Check values in RefreshRampingDM
+702;No file RefreshRampingDM found;Check values in RefreshRampingDM
+703;Error ReadFile of RefreshRampingDM;
+704;Error SearchData of RefreshRampingDM;
+705;Error WriteData of RefreshRampingDM;
+801;Allocating memory failed;
+//VAC;;
+1001;Initialisation of Vacuum Control failed;Restart PLC
+1002;Vac Monitor is lower than 0;Check Vacuum System
+1003;PTR Vac monitor not connected;Check Vacuum System
+1004;Vacuum is out of limits,X-ray is switched off;
+1005;Insufficient Vacuum for next High Voltage level;Please retry
+1010;Reaching the minimum vacuum level took longer than average;
+1101;Variable Vacuum not found;
+1102;Error during allocating memory for Vacuum;
+1103;Error SearchData of Vacuum;
+1104;Error WriteData of Vacuum;
+1105;Error ReadFile of Vacuum;
+//HTG;;
+2001;Initialisation of HTG kV failed;Restart PLC
+2002;kV Monitor is lower than 0;Check HTG Cable
+2003;HTG kV Monitor not connected;Check HTG Cable
+2004;HTG Demand is lower than HTG DM kVMin;Enter new Demand Value for voltage
+2005;kV Demand is out of dig. Range;Check HTG DM
+2011;Initialisation of HTG uA failed;Restart PLC
+2012;uA Monitor is lower than Offset Max;Check HTG Cable
+2013;HTG uA Monitor not connected;Check HTG Cable
+2014;HTG uA Demand is lower than HTG DM uAMin;Enter new Demand Value for current
+2015;uA Demand is out of dig. Range;Check HTG DM
+2016;uA Demand is over tube current max;Enter new Demand Value for current
+2017;uA Demand is over HTG current max;Enter new Demand Value for current
+2018;Emission current is over max tube current at new voltage;Enter new Demand Value for current
+2019;HTG Current is over max Tube Power;
+2020;Emission current Demand can not be achieved; Repeat Filament Adjust and/or Leakage Current Test
+2021;Initialisation of HTG Fil failed;Restart PLC
+2022;Fil Monitor is lower than 0;Check HTG Cable
+2023;HTG Fil Monitor not connected;Check HTG Cable
+2024;Fil Demand is out of dig. Range;Check HTG DM
+2025;Filament Adjust aborted;Restart Filament Adjust
+2026;Filament Adjust aborted: Filament broken;Check Filament
+2027;Pre Filament Adjust aborted: Filament broken;Check Filament
+2028;Filament broken detected due to wrong Filament monitor;Start Filament Adjust
+2029;New Filament detected;Counter reset
+2030;Filament monitor is out of filament demand range;It's recommended to start Filament Adjust
+2031;Initialisation of HTG Safty failed;Restart PLC
+2040;Refresh: kVStart is greater than kVMax;Check kVstart
+2041;Refresh: kVDemand is lower than kVMin;Enter new Start Value
+2042;Refresh: Timout;
+2043;Refresh aborted due to high Leakage Current;Maximum High Voltage limited
+2044;Refresh aborted due to too many limit violations;Maximum High Voltage limited
+2051;Filament Adjust: FilDemand is lower than Fil Demand Min;Enter new Start Value
+2052;Filament Adjust: KV Refresh is lower than kV Filament Adjust;Do Refresh
+2053;Pre Filament Adjust: FilDemand is lower than Fil Demand Min;Enter new Start Value
+2060;Emission current would be over max tube current at new voltage, Emmission current is automatically adjusted
+2101;HTG Variable not found;
+2102;Error during allocating memory for HTG;
+2103;Error SearchData of HTG;
+2104;Error WriteData of HTG;
+2105;Error ReadFile of HTG;
+2201;High Voltage Generator switched off or cable W1.7 not connected;
+2202;Missing Generator feedback; Check connection to Generator, cable W1.8
+2301;Grid problem detected;
+2501;PC Demand kV is over HTG Max;Enter new PC Demand value
+2502;PC Demand kV is lower than HTG Min;Enter new PC Demand value
+2503;PC demand Emission uA is over than HTG Max;Enter new PC Demand value
+2504;PC Demand Emission uA is lower than 0;Enter new PC Demand value
+2505;PC Demand Filament is over Filament Max;Enter new PC Demand value
+2506;PC Demand Filament is lower than Filament Min;Enter new PC Demand value
+//TUBE;;
+3101;Variable Tube not found;
+3102;Error during allocating memory for Tube;
+3103;Error SearchData of Tube;
+3104;Error WriteData of Tube;
+3105;Error ReadFile of Tube;
+3106;Variable Tube Current Characteristics not found;
+3107;Error during allocating memory for Tube Current Table;
+3108;Error SearchData of Tube Current Table;
+3109;Error WriteData of Tube Current Table;
+3110;Error ReadFile of Tube Current Characteristics;
+3111;Variable Mode not found;
+3112;Error during allocating memory for Mode;
+3113;Error SearchData of Mode;
+3114;Error WriteData of Mode;
+3115;Error ReadFile of Mode;
+3116;Path to current Mode not found;
+3117;Error SearchData of Filament Current Table;
+3118;Error WriteData of Filament Current Table;
+3119;Error ReadFile of Filament Current Charateristics;
+3120;PC demand value is greater than Tube kVMax;
+3121;High Leakage Current detected;Tube maintenance recommended
+//FOC;;
+4001;Initialisation of Focus Init failed;Restart PLC
+4002;Foc Demand is out of dig. Range;Check Focus DM
+4101;Variable Focus not found;
+4102;Error during allocating memory for Focus;
+4103;Error SearchData of Focus;
+4104;Error WriteData of Focus;
+4105;Error ReadFile of Focus;
+4106;Variable Focus Characteristics not found;
+4107;Error during allocating memory for Focus Table;
+4108;Error SearchData of Focus Table;
+4109;Error WriteData of Focus Table;
+4110;Error ReadFile of Focus Characteristics;
+4501;PC Demand Focus current is over Focus Max;Enter new PC Demand value
+4502;PC Demand Focus current is lower than 0;Enter new PC Demand value
+4503;Reset aborted, save FocusTable is ongoing;Wait a moment and try again
+//CON;;
+5001;Initialisation of Condenser failed;Restart PLC
+5002;Con Demand is out of dig. Range;Check Condenser DM
+5101;Variable Condenser not found;
+5102;Error during allocating memory for Condenser;
+5103;Error SearchData of Condenser;
+5104;Error WriteData of Condenser;
+5105;Error ReadFile of Condenser;
+5106;Variable Condenser Characteristics not found;
+5107;Error during allocating memory for Condenser Table;
+5108;Error SearchData of Condenser Table;
+5109;Error WriteData of Condenser Table;
+5110;Error ReadFile of Condenser Charateristics;
+//CENT;;
+6001;Initialisation of Centering failed;Restart PLC
+6002;Centering 1 X demand out of digital range;Check Centering data module
+6003;Centering 1 Y demand out of digital range;Check Centering data module
+6004;Centering aborted;Restart Centering
+6005;Centering current kV aborted;Restart Centering
+6006;Centering failed;Do mechanical Centering
+6007;Centering X demand value out of range;
+6008;Centering Y demand value out of range;
+6101;Variable Center1 not found;
+6102;Error during allocating memory for Center;
+6103;Error SearchData of Center;
+6104;Error WriteData of Center;
+6105;Error ReadFile of Center;
+6106;Variable Centering Charateristics not found;
+6107;Error during allocating memory for Center Table;
+6108;Error SearchData of Centering Table;
+6109;Error WriteData of Centering Table;
+6110;Error ReadFile of Center 1 Charateristics;
+6111;Variable Center2 not found;
+6112;Error during allocating memory for Center 2;
+6113;Error SearchData of Center 2;
+6114;Error WriteData of Center 2;
+6115;Error ReadFile of Center 2;
+6116;Variable Cerntering 2 Characteristics not found;
+6117;Error allocating memory of Center 2 Table;
+6118;Error SearchData of Centering 2 Table;
+6119;Error WriteData of Centering 2 Table;
+6120;Error ReadFileof Centering 2 Characteristics;
+6201;Centering All: Timeout;
+6202;Centering Active: Timeout;
+6203;Centering: New Values are not in center;Restart Centering
+6204;Centering or target current measurement are not OK;Restart Centering
+6205;Centering Aperture: New Values are not in center;Restart Centering
+6206;Centering or aperture current measurement are not OK;Restart Centering
+6207;Centering: Found values are not correct; Check Centering
+6208;No start values found;Check centering parameters or do mechanical centering
+6209;Centering aborted: Emission current Demand can not be achieved; Repeat Filament Adjust
+6210;Centering aborted due to high Leakage Current;Tube maintenance recommended
+6300;CenterActive execution recommended to get proper center offset values;
+6501;PC Demand Centering 1 Current is over Center Current Max;Enter new PC Demand value
+6502;PC Demand Centering 1 Current is lower than Center Current Min;Enter new PC Demand value
+6503;PC Demand Centering 1 Y is over Center Max;Enter new PC Demand value
+6504;PC Demand Centering 1 Y is lower than Center Min;Enter new PC Demand value
+6505;PC Demand Centering 2 X is over Center Max;Enter new PC Demand value
+6506;PC Demand Centering 2 X is lower than Center Min;Enter new PC Demand value
+6507;PC Demand Centering 2 Y is over Center Max;Enter new PC Demand value
+6508;PC Demand Centering 2 Y is lower than Center Min;Enter new PC Demand value
+//PROBE;;
+7001;Initialisation of Tube Target failed;Restart PLC
+7002;TargetCurrent is less than 0;
+7003;TargetCurrent is over maximum value;
+7004;Target power peak value is over maximum Target power;Decrease Demand value
+7006;Target power average is over maximum Target power;Decrease Demand value
+7005;Path to current Target not found;
+7011;Initialisation of Aperture failed;Restart PLC
+7012;Aperture Current is less than 0;
+7013;Aperture Current not connected;
+7014;Check Datamodule Value for Aperture ProbeInMax;
+7015;Focus Aperture Current is less than 0;
+7016;Focus Aperture Current not connected;
+7017;Check Datamodule Value for Focus Aperture ProbeInMax;
+7018;Focus aperture power is over maximum aperture power;To avoid serious damage on aperture centering is required
+7019;Aperture power is over maximum aperture power;To avoid serious damage on aperture centering is required
+7030;Voltage demand value is zero or less.;Enter new PC Demand value.
+7031;Target control error operating demand values.;Enter different demand values.
+7032;Target current demand decreased due to emission current over maximum.;
+7033;Target current demand increased due to emission current less than minimum.;
+7040;CenterActive execution recommended due to Target-/Emission current ratio;
+7101;Variable Target not found;
+7102;Error during allocating memory for Target;
+7103;Error SearchData of Target;
+7104;Error WriteData of Target;
+7105;Error ReadFile of Target;
+7111;Variable Aperture not found;
+7112;Error during allocating memory for Aperture;
+7113;Error SearchData of Aperture;
+7114;Error WriteData of Aperture;
+7115;Error ReadFile of Aperture;
+7501;PC Demand Target uA is over Target Max;Enter new PC Demand value
+7502;PC Demand Target uA is less than 0;Enter new PC Demand value
+7503;PC Demand Target Power is over Target Power Max;Enter new PC Demand value
+7504;PC Demand Target Poweris less than 0;Enter new PC Demand value
+//ErrorCharacteristics
+8001;Deleting focus table failed.;
+8002;Deleting condenser table failed.;
+8003;Deleting centering table 1 failed.;
+8004;Deleting centering table 2 failed.;
+8005;Deleting tube current table failed.;
+8006;Deleting filament current table failed.;
+8007;Invalid value length in FocusTab1;Maximum of 11 characters allowed.
+8008;Missing real value in FocusTab1;
+8009;Invalid index in FocusTab1;
+8010;Invalid bool value in FocusTab1;
+8011;Opening file FocusTab1;
+8012;Reading file FocusTab1;
+8013;Closing file FocusTab1;
+8014;Deleting file FocusTab1;
+8015;Creating file FocusTab1;
+8016;Writing file FocusTab1;
+8057;Invalid value length in CondenserTab1;Maximum of 11 characters allowed.
+8058;Missing real value in CondenserTab1;
+8059;Invalid index in CondenserTab1;
+8060;Invalid bool value in CondenserTab1;
+8061;Opening file CondenserTab1;
+8062;Reading file CondenserTab1;
+8063;Closing file CondenserTab1;
+8064;Deleting file CondenserTab1;
+8065;Creating file CondenserTab1;
+8066;Writing file CondenserTab1;
+8107;Invalid value length in CenteringTab1;Maximum of 11 characters allowed.
+8108;Missing real value in CenteringTab1;
+8109;Invalid index in CenteringTab1;
+8110;Invalid bool value in CenteringTab1;
+8111;Opening file CenteringTab1;
+8112;Reading file CenteringTab1;
+8113;Closing file CenteringTab1;
+8114;Deleting file CenteringTab1;
+8115;Creating file CenteringTab1;
+8116;Writing file CenteringTab1;
+8157;Invalid value length in CenteringTab2;Maximum of 11 characters allowed.
+8158;Missing real value in CenteringTab2;
+8159;Invalid index in CenteringTab2;
+8160;Invalid bool value in CenteringTab2;
+8161;Opening file CenteringTab2;
+8162;Reading file CenteringTab2;
+8163;Closing file CenteringTab2;
+8164;Deleting file CenteringTab2;
+8165;Creating file CenteringTab2;
+8166;Writing file CenteringTab2;
+8207;Invalid value length in FilamentCurrentTab1;Maximum of 11 characters allowed.
+8208;Missing real value in FilamentCurrentTab1;
+8209;Invalid index in FilamentCurrentTab1;
+8210;Invalid bool value in FilamentCurrentTab1;
+8211;Opening file FilamentCurrentTab1;
+8212;Reading file FilamentCurrentTab1;
+8213;Closing file FilamentCurrentTab1;
+8214;Deleting file FilamentCurrentTab1;
+8215;Creating file FilamentCurrentTab1;
+8216;Writing file FilamentCurrentTab1;
+8251;Deleting defocus table not implemented;
+8252;Reading DefocussingTableList failed;
+8253;Opening DefocusTab failed;
+8254;DefocusTab1 (Default) is missing;
+8257;Invalid value length in DefocusTab1;Maximum of 11 characters allowed.
+8258;Missing real value in DefocusTab1;
+8259;Invalid index in DefocusTab1;
+8260;Invalid bool value in DefocusTab1;
+8261;Opening file DefocusTab1;
+8262;Reading file DefocusTab1;
+8263;Closing file DefocusTab1;
+8264;Deleting file DefocusTab1;
+8265;Creating file DefocusTab1;
+8266;Writing file DefocusTab1;
+8409;Invalid index in HashTable1;
+8411;Opening file HashTable1;
+8412;Reading file HashTable1;
+8413;Closing file HashTable1;
+8414;Deleting file HashTable1;
+8415;Creating file HashTable1;
+8416;Writing file HashTable1;
+8457;Invalid value length in FilamentLifetimeTable;
+8459;Invalid index in FilamentLifetimeTable;
+8461;Opening file FilamentLifetimeTable;
+8462;Reading file FilamentLifetimeTable;
+8463;Closing file FilamentLifetimeTable;
+8464;Deleting file FilamentLifetimeTable;
+8465;Creating file FilamentLifetimeTable;
+8466;Writing file FilamentLifetimeTable;
+8507;Invalid value length in TubeheadConfig;Maximum of 47 characters allowed.
+8509;Invalid index in TubeheadConfig;
+8511;Opening file TubeheadConfig;
+8512;Reading file TubeheadConfig;
+8513;Closing file TubeheadConfig;
+8514;Deleting file TubeheadConfig;
+8515;Creating file TubeheadConfig;
+8516;Writing file TubeheadConfig;
+8551;Deleting diodeRingCalibrationTable not implemented;
+8557;Invalid value length in diodeRingCalibrationTable;Maximum of 11 characters allowed.
+8558;Missing real value in diodeRingCalibrationTable;
+8559;Invalid index in diodeRingCalibrationTable;
+8561;Opening file diodeRingCalibrationTable;
+8562;Reading file diodeRingCalibrationTable;
+8563;Closing file diodeRingCalibrationTable;
+8564;Deleting file diodeRingCalibrationTable;
+8565;Creating file diodeRingCalibrationTable;
+8566;Writing file diodeRingCalibrationTable;
+//PC-Fehler;;
+65536;PC errors starting number.;
+65537;Invalid exception number.;
+65538;Exception from PLC without exception ID.;
+65539;Invalid error number format on loading ErrorCodes detected.;
+65540;Invalid number of values in csv-File.;
+65541;Invalid DateTime-Entry in csv-File.;
+65542;Invalid connection string for PVI-Variable.;
+65543;PVI-Error;
+65544;Invalid String in index.;
+65545;PVI-Service error.;
+65546;PVI-Cpu error.;
+65547;PVI-Task error.;
+65548;PVI-Variable error.;
+65549;PVI-Item not connected.;
+65550;Error saving data to plc.;
+65551;Error trying parse MsgBoxEntry;
+65552;Error trying parse ExceptionId;
+65553;Error trying parse ExceptionNumber;
+65554;Dll not found which is required by PVIServices.dll;Check installation of B&R Automation.
+65555;PlcRestart requested without service permission.;Login to enable PlcRestart.
+65556;ClearErrorList requested without service permission.;Login to enable ClearErrorList.
+65557;Invalid format in configuration file.;
+65558;Invalid format in base configuration file.;
+65559;Invalid index in target list requested.;
+65560;Invalid index in mode list requested.;
+65561;Invalid leakage current test timer settings.;The given interval for leakage current test is greater than the given duration for leakage current test.
+65562;Invalid leakage current test timer interval.;The given interval for leakage current test is greater than the given duration for conditioning.
+65563;Invalid filament adjust timer interval.;The given interval for filament adjust is greater than the given duration for conditioning.
+65564;Conditioning aborted by user.;
+65565;Access to value denied.;
+65566;Access to value not supported in this configuration.;
+65567;Access to value denied. Object is currently read only.;
+65568;Invalid index in tube head list requested.;
+65569;Argument is out of range.;
+65570;Invalid demand value.;
+65571;Violation of high voltage lower limit;
+65572;Violation of high voltage upper limit;
+65573;Violation of emission current lower limit;
+65574;Violation of emission current upper limit;
+65575;No time preset; Preset a time greater 00:00:00.
+65576;Invalid array length found.;
+65577;File not found or access denied.;
+65578;Invalid list item indexed.;
+65579;Violation of high voltage start lower limit.;
+65580;Violation of high voltage start upper limit.;
+65581;Conflicting functions enabled.;
+65582;Lower hold time for alternating conditioning too high.;The given value for lower hold time is greater than the given value for duration.
+65583;Object is not read/write accessible.;
+65584;PlcVariable has already been added.;
+65585;Invalid value in AutoFuncDM.;Check AutoFunc data module.
+65586;Invalid data in BurCommandSetter.;Data is either null or empty.
+65587;Violation of LimitedKVMin.;Make sure, the value set to LimitedKV is greater or equal to LimitedKVMin.
+65588;Tube interface not initialized.;Wait for initialized event.
+65589;Invalid tube state.;Requested operation is not allowed in the current tube state.
+//TubeServiceMonitors
+65600;Unknown value for service state received.;
+//Config
+65650;Invalid data contract information found.;
+65651;Invalid path for config file.;Check path information.
+65652;Invalid source instance.;Check the instance that should be serialized.
+65653;Maximum amount of serializable objects exceeded.;
+//General IO
+65700;The given directory could not be found.;
+65701;The given location is not accessible.;
+65702;File not found.;
+65703;Invalid path format.;
+65704;Path is write protected.;
+65705;Error creating mutex.;
+//Logging
+65800;Error writing MaintenanceLog.;
+//General
+66000;Unhandled exception occurred.;
+66001;Invalid cast exception occurred.;
+66100;Invalid data module name.;
+66101;Entry is read-only.;
+66102;Error reading data module value.;

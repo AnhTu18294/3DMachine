@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="CT3DMachine.XRayControl.UpDownButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:CT3DMachine.XRayControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="24" d:DesignWidth="18"
+             MinWidth="18" MaxWidth="18">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="UpButton" Click="UpButton_Click" Padding="0, -2, 0, 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Top">
+            <materialDesign:PackIcon Kind="ExpandLess" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </Button>
+        <Button x:Name="DownButton" Grid.Row="1" Click="DownButton_Click"  Padding="0, -2, 0, 0" HorizontalContentAlignment="Center" VerticalContentAlignment="Top">
+            <materialDesign:PackIcon Kind="ExpandMore" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </Button>
+    </Grid>
+</UserControl>

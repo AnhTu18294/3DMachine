@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SelftestConfiguration xmlns="http://schemas.datacontract.org/2004/07/XRAYWorXBase.Config"
+                       xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <CenteringBadThreshold>300</CenteringBadThreshold>
+  <CenteringGoodThreshold>200</CenteringGoodThreshold>
+  <LeakageCurrentThreshold>10</LeakageCurrentThreshold>
+</SelftestConfiguration>

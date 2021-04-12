@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="CT3DMachine.XRayControl.XRayMonitor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CT3DMachine.XRayControl"
+             mc:Ignorable="d" d:DesignWidth="480" Height="400">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="5.5*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <!-- XRay ON OFF State -->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.RowSpan="2" Grid.Column="0" Grid.Row="0" Stretch="None" HorizontalAlignment="Center" VerticalAlignment="Center" Source="C:\Users\tuna\Desktop\Workspace\CT3DMachine\CT3DMachine\icons\xray_warning.png"></Image>
+            <Label Content="X-RAY" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button x:Name="btnXRayOn" Content="Bật" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="75" Height="75" Click="onXRayOnClicked"/>
+            <Button x:Name="btnXRayOff" Content="Tắt" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="75" Height="75" Click="onXRayOffClicked"/>
+        </Grid>
+
+        <!-- XRay Monitor Value -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Cao áp [kV]" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="10, 0, 0, 0"/>
+            <Label Content="Dòng phát tia X [µA]" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+            <Label Content="Vận tốc máy bơm [RPM]" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+            <Label Content="Chân không [mbar]" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10, 0, 0, 0"/>
+
+            <local:NumericUpDown x:Name="nudHighVoltage" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="20, 4" Step="1" DecimalPlaces="0" Maximum="10000"
+                                 ValueUpdated="onNUDHighVoltageValueUpdated" GotFocus="onNUDHighVoltageGotFoccus" LostFocus="onNUDHighVoltageLostFoccus"/>
+            <local:NumericUpDown x:Name="nudEmissionCurrent" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="20, 4" Step="1" DecimalPlaces="0" Maximum="10000"
+                                 ValueUpdated="onNUDEmissionCurrentValueUpdated" GotFocus="onNUDEmissionCurrentGotFoccus" LostFocus="onNUDEmissionCurrentLostFoccus"/>
+            <TextBox x:Name="txtHighVoltage" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="25, 5" TextWrapping="Wrap" Text="80" IsReadOnly="True"/>
+            <TextBox x:Name="txtEmissionCurrent" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="25, 5" TextWrapping="Wrap" Text="80" IsReadOnly="True"/>
+            <TextBox x:Name="txtTurbopump" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="25, 5" TextWrapping="Wrap" Text=""/>
+            <Button x:Name="btnTurbopumpOn" Content="Bật" Grid.Row="3" Grid.Column="4"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="onTurbopumpOnClicked"/>
+            <Button x:Name="btnTurbopumpOff" Content="Tắt" Grid.Row="3" Grid.Column="5"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="onTurbopumpOffClicked"/>
+            <TextBox x:Name="txtVacuum" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="25, 5" TextWrapping="Wrap" Text=""/>
+            <Label x:Name="lbXRayNotification" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Máy phát sẵn sàng"  Margin="10, 0, 0, 0" Foreground="#FF04951E"/>
+        </Grid>
+        <!-- XRay Autofunction State -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnStartup" Content="Khởi động" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10, 0" Click="onBtnStartUpClicked"/>
+            <Button x:Name="btnRefresh" Content="Cao áp" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10, 0" Click="onRefreshClicked"/>
+            <Button x:Name="btnFilamentAdj" Content="Sợi đốt" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10, 0" Click="onFilamentAdjustClicked"/>
+            <Button x:Name="btnCenter" Content="Định tâm" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10, 0" Click="onCenterClicked"/>
+        </Grid>
+        <!-- XRay State -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Ellipse x:Name="circleInterlock" Grid.Column="0" Fill="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25" />
+            <Label Content="Khóa liên động" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Ellipse x:Name="circleVacuum" Grid.Column="2" Fill="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25" />
+            <Label Content="Chân không" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Ellipse x:Name="circleCooling" Grid.Column="4" Fill="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25" />
+            <Label Content="Tản nhiệt" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Grid>
+
+    </Grid>
+</UserControl>
