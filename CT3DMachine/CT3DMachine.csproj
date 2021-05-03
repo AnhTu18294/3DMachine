@@ -146,6 +146,7 @@
     <Compile Include="Model\ConnectionStatusChangedEventArgs.cs" />
     <Compile Include="Model\DetectorCalibBright.cs" />
     <Compile Include="Model\DetectorCalibDark.cs" />
+    <Compile Include="Model\DetectorCommand.cs" />
     <Compile Include="Model\DetectorConfiguration.cs" />
     <Compile Include="Model\DetectorError.cs" />
     <Compile Include="Model\DetectorGetImage.cs" />

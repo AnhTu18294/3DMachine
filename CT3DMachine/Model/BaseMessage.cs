@@ -46,6 +46,7 @@ namespace CT3DMachine.Model
         DETECTOR_GET_IMAGE_DONE = 0x0106,
         DETECTOR_STOP_MESSAGE = 0x0107,
         DETECTOR_ERROR_MESSAGE = 0x0108,
+        DETECTOR_COMMAND = 0x0109
     }
 
     public abstract class BaseMessage

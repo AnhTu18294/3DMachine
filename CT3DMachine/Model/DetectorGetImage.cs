@@ -18,7 +18,7 @@ namespace CT3DMachine.Model
         {
             mIndex = _index;
             byte[] bPathData = Encoding.ASCII.GetBytes(_path);
-            Buffer.BlockCopy(bPathData, 0, mPath, 0, _path.Length);
+            Buffer.BlockCopy(bPathData, 0, mPath, 0, bPathData.Length);
         }
 
         public UInt16 getIndex() { return mIndex; }

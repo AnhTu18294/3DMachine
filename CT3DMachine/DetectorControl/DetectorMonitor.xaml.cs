@@ -21,6 +21,9 @@ using CT3DMachine.Helper;
 using System.Windows.Threading;
 using System.Windows.Forms;
 using NLog;
+
+using CT3DMachine.Cycle;
+
 namespace CT3DMachine.DetectorControl
 {
     /// <summary>
@@ -271,7 +274,17 @@ namespace CT3DMachine.DetectorControl
 
         private void btnGetImage_Clicked(object sender, RoutedEventArgs e)
         {
-            this.getImage(0);
+            //this.getImage(0);
+            var task = Task.Run(() =>
+            {
+                TimeoutSyncTask.TOSResult res;
+                TimeoutSyncTask getImageTask = new GetImageTask(10000, this, (UInt16)(0));
+                res = getImageTask.execute();
+                Logger.Info("Detector GetImage --> GetImageTask Result:" + res);
+                TimeoutSyncTask stopDetectorTask = new StopDetectorTask(10000, this);
+                res = stopDetectorTask.execute();
+                Logger.Info("Detector GetImage --> StopDetectorTask Result:" + res);
+            });
         }
 
         private void btnCalibrateDark_Clicked(object sender, RoutedEventArgs e)
@@ -286,6 +299,15 @@ namespace CT3DMachine.DetectorControl
             if (!StartedService) return;
             DetectorCalibBright msg = new DetectorCalibBright();
             this.mDetectorService.processInnerMessage(msg);
+        }
+
+        private void btnSetCommand_Clicked(object sender, RoutedEventArgs e)
+        {
+            //byte[] temp = Encoding.ASCII.GetBytes(tbSetCommand.Text);            
+            //Logger.Info("===> SetCommand: {0} ---> bytes: {1}", tbSetCommand.Text, BitConverter.ToString(temp));
+            if (!StartedService) return;
+            DetectorCommand msg = new DetectorCommand(tbSetCommand.Text);
+            //this.mDetectorService.processInnerMessage(msg);
         }
     }
 }

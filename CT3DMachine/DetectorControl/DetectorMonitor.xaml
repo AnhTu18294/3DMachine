@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CT3DMachine.DetectorControl"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="480">
+             d:DesignHeight="260" d:DesignWidth="480">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -13,6 +13,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*" />
@@ -42,7 +43,7 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="btnCalibrateDark" Grid.Column="0" Grid.Row="0" Content="Hiệu chỉnh tối" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10, 0, 10, 0" Click="btnCalibrateDark_Clicked"/>
             <Button x:Name="btnCalibrateBright" Grid.Column="1" Grid.Row="0" Content="Hiệu chỉnh sáng" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10, 0, 10, 0" Click="btnCalibrateBright_Clicked"/>
-            <Button x:Name="btnConfigure" Grid.Column="2" Grid.Row="0" Content="Thiết lập" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="10, 0, 10, 0" Click="btnConfigure_Clicked" Margin="12,0,12,1"/>
+            <Button x:Name="btnConfigure" Grid.Column="2" Grid.Row="0" Content="Thiết lập" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10, 0, 10, 0" Click="btnConfigure_Clicked" Margin="12,0,12,1"/>
             <Button x:Name="btnGetImage" Grid.Column="3" Grid.Row="0" Content="Chụp ảnh" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10, 0, 10, 0" Click="btnGetImage_Clicked"/>
         </Grid>
         <Grid x:Name="status" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3">
@@ -65,5 +66,18 @@
             <Label x:Name="lbDetectorNumOfFrame" Grid.Row="1" Content="Số ảnh chụp ( 1 )" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Grid>
 
+        <Grid x:Name="SetCommand" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lbSetCommand" Grid.Column="0" Grid.Row="0" Content="Đặt lệnh" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20, 0"/>
+            <TextBox x:Name="tbSetCommand" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="250"/>
+            <Button x:Name="btnSetCommand" Grid.Column="2" Grid.Row="0" Content="Đặt lệnh" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10, 0, 10, 0" Click="btnSetCommand_Clicked"/>
+        </Grid>        
     </Grid>
 </UserControl>
