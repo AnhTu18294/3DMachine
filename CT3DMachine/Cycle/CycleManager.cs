@@ -68,7 +68,7 @@ namespace CT3DMachine.Cycle
         public static int MOTOR_READY_TIMEOUT = 1000;
         public static int FIRST_MOVE_TIMEOUT = 5000;
         public static int STEP_MOVE_TIMEOUT = 60000;
-        public static int GET_IMAGE_TIMEOUT = 1000;
+        public static int GET_IMAGE_TIMEOUT = 10000;
         public static int TURN_ON_XRAY_TIMEOUT = 5000;
         public static int TURN_OFF_XRAY_TIMEOUT = 5000;
         public static int STOP_DETECTOR_TIMEOUT = 5000;

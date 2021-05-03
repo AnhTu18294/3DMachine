@@ -123,7 +123,7 @@ namespace CT3DMachine.MotionControl
             this.ReadyMotion = false;
             this.mReadyFlag = true;
             this.enableMotion();
-            this.controlHomeMotion();
+//            this.controlHomeMotion();
             if(this.mTimerCheckReady == null)
             {
                 this.mTimerCheckReady = new DispatcherTimer();
@@ -231,7 +231,7 @@ namespace CT3DMachine.MotionControl
 
         public void moveToPositionByPulse(Int32 _rotX, Int32 _detY, Int32 _rotC, Int32 _detZ, Int32 _xrayZ)
         {
-            if (!ReadyMotion) return;
+//            if (!ReadyMotion) return;
             MechanicalPosition msg = new MechanicalPosition(MessageType.MECHANICAL_MOVE_MOTOR);
             msg.setFirstEnginePosition(_rotX);
             msg.setSecondEnginePosition(_detY);
@@ -245,7 +245,7 @@ namespace CT3DMachine.MotionControl
 
         public void moveToPositionByValue(double _rotX, double _detY, double _rotC, double _detZ, double _xrayZ)
         {
-            if (!ReadyMotion) return;
+//            if (!ReadyMotion) return;
             this.moveToPositionByPulse(
                 (Int32)(_rotX * PULSES_PER_MILLIMETRE), 
                 (Int32)(_detY * PULSES_PER_MILLIMETRE), 

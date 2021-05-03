@@ -61,13 +61,13 @@ namespace CT3DMachine
 
             ////XRay Service
             this.mXRayMonitor = this.ct3dControl.xRayControl;
-            //this.mXRayMonitor.configurePath(PathTool.bingPathFromAppDir("conf_deployment"), PathTool.bingPathFromAppDir("logs"));
-            this.mXRayMonitor.configurePath(PathTool.bingPathFromAppDir("conf"), PathTool.bingPathFromAppDir("logs"));
+            this.mXRayMonitor.configurePath(PathTool.bingPathFromAppDir("conf_deployment"), PathTool.bingPathFromAppDir("logs"));
+            //this.mXRayMonitor.configurePath(PathTool.bingPathFromAppDir("conf"), PathTool.bingPathFromAppDir("logs"));
             this.mXRayMonitor.startService();
 
             ////Motion Service
             this.mMotionMonitor = this.ct3dControl.motionControl;
-            this.mMotionMonitor.configurePort("COM51", 9600);
+            this.mMotionMonitor.configurePort("COM5", 9600);
             this.mMotionMonitor.startService();
 
             ////Turnable Monitor
@@ -79,6 +79,9 @@ namespace CT3DMachine
             mCycleManager.EventCycleInfo += new EventCycleInfoHandler(notifyInfo);
             mCycleManager.EventCycleWarning += new EventCycleWarningHandler(notifyWarning);
             mCycleManager.EventCycleError += new EventCycleErrorHandler(notifyError);
+
+            Logger.Info("=====>XRay Config = conf_deployment");
+            Logger.Info("=====>Motor Config = COM5");
         }
         
         void machineControleEventStart()
