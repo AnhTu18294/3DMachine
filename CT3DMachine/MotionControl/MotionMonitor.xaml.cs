@@ -24,6 +24,9 @@ using System.Windows.Threading;
 using CT3DMachine.XRayControl;
 using CT3DMachine.MotionControl;
 using CT3DMachine.TurntableControl;
+using System.Threading;
+
+using CT3DMachine.Cycle;
 
 namespace CT3DMachine.MotionControl
 {
@@ -39,6 +42,8 @@ namespace CT3DMachine.MotionControl
         private const double PULSES_PER_STEP = 1;
         private const double Dsd = 2000;
         private const double RADIUS_OF_TURNTABLE = 300; //mm
+
+        public static int STEP_MOVE_TIMEOUT = 1000;
 
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
 
@@ -257,7 +262,7 @@ namespace CT3DMachine.MotionControl
         public bool goToPosition(double _rotX, double _detY, double _rotC, double _detZ, double _xrayZ)
         {
             Logger.Info("Move to position: {0}, {1}, {2}, {3}, {4}", _rotX, _detY, _rotC, _detZ, _xrayZ);
-            if (!this.ReadyMotion) return false;
+//            if (!this.ReadyMotion) return false;
             
             double deltaRotX = _rotX - this.mRotXPos;
             double deltaDetZ = _detZ - this.mDetZPos;
@@ -442,17 +447,55 @@ namespace CT3DMachine.MotionControl
         private void btnXRayZUp_Click(object sender, RoutedEventArgs e)
         {
             double deltaXRayZVal = Convert.ToDouble(this.tbXRayZVal.Text);
-            double dXRayVal = this.mXRayPos + deltaXRayZVal;
-            Logger.Info("Do RotC Down: {0}, {1}, {2}, {3}, {4}, {5}", dXRayVal, this.mRotXPos, this.mDetYPos, this.mRotCPos, this.mDetZPos, this.mXRayPos);
-            this.moveToPositionByValue(0, 0, 0, 0, deltaXRayZVal);
+            double stepSize = 1.0;
+            int numOfStep = (int)Math.Floor(deltaXRayZVal / stepSize);
+            double restStepSize = deltaXRayZVal - (double)numOfStep * stepSize;
+
+            var task = Task.Run(() =>
+            {
+                TimeoutSyncTask.TOSResult res;
+                for (int i = 0; i < numOfStep; i++)
+                {
+                    TimeoutSyncTask moveTask = new MoveMotorByDeltaTask(STEP_MOVE_TIMEOUT, this, 0, 0, 0 ,0, stepSize);
+                    res = moveTask.execute();
+                    Logger.Info("MoveMotorByDeltaTask: XRayZ delta post = {0} --> Result: {1}", stepSize, res);
+                    Thread.Sleep(TimeSpan.FromMilliseconds(100));
+                }
+
+                if(restStepSize > 0)
+                {
+                    TimeoutSyncTask moveTask = new MoveMotorByDeltaTask(STEP_MOVE_TIMEOUT, this, 0, 0, 0, 0, restStepSize);
+                    res = moveTask.execute();
+                    Logger.Info("MoveMotorByDeltaTask: XRayZ delta post = {0} --> Result: {1}", restStepSize, res);
+                }
+            });
         }
 
         private void btnXRayZDown_Click(object sender, RoutedEventArgs e)
         {
             double deltaXRayZVal = Convert.ToDouble(this.tbXRayZVal.Text);
-            double dXRayVal = this.mXRayPos - deltaXRayZVal;
-            Logger.Info("Do RotC Down: {0}, {1}, {2}, {3}, {4}, {5}", dXRayVal, this.mRotXPos, this.mDetYPos, this.mRotCPos, this.mDetZPos, this.mXRayPos);
-            this.moveToPositionByValue(0, 0, 0, 0, -deltaXRayZVal);
+            double stepSize = 1.0;
+            int numOfStep = (int)Math.Floor(deltaXRayZVal / stepSize);
+            double restStepSize = deltaXRayZVal - (double)numOfStep * stepSize;
+
+            var task = Task.Run(() =>
+            {
+                TimeoutSyncTask.TOSResult res;
+                for (int i = 0; i < numOfStep; i++)
+                {
+                    TimeoutSyncTask moveTask = new MoveMotorByDeltaTask(STEP_MOVE_TIMEOUT, this, 0, 0, 0, 0, -stepSize);
+                    res = moveTask.execute();
+                    Logger.Info("MoveMotorByDeltaTask: XRayZ delta post = {0} --> Result: {1}", -stepSize, res);
+                    Thread.Sleep(TimeSpan.FromMilliseconds(100));
+                }
+
+                if (restStepSize > 0)
+                {
+                    TimeoutSyncTask moveTask = new MoveMotorByDeltaTask(STEP_MOVE_TIMEOUT, this, 0, 0, 0, 0, -restStepSize);
+                    res = moveTask.execute();
+                    Logger.Info("MoveMotorByDeltaTask: XRayZ delta post = {0} --> Result: {1}", -restStepSize, res);
+                }
+            });
         }
         //--------------------- Move
         private void btnRotXMove_Click(object sender, RoutedEventArgs e)
@@ -490,7 +533,32 @@ namespace CT3DMachine.MotionControl
         {
             double dXRayPos = Convert.ToDouble(this.tbXRayZVal.Text);
             double deltaXRayPos = dXRayPos - this.mXRayPos;
-            this.moveToPositionByValue(0, 0, 0, 0, deltaXRayPos);
+
+            double sign = (deltaXRayPos >= 0) ? 1.0 : -1.0;
+            double deltaXRayZVal = Math.Abs(deltaXRayPos);
+            double stepSize = 1.0;
+            int numOfStep = (int)Math.Floor(deltaXRayZVal / stepSize);
+            double restStepSize = deltaXRayZVal - (double)numOfStep * stepSize;
+
+            var task = Task.Run(() =>
+            {
+                TimeoutSyncTask.TOSResult res;
+                for (int i = 0; i < numOfStep; i++)
+                {
+                    TimeoutSyncTask moveTask = new MoveMotorByDeltaTask(STEP_MOVE_TIMEOUT, this, 0, 0, 0, 0, sign * stepSize);
+                    res = moveTask.execute();
+                    Logger.Info("MoveMotorByDeltaTask: XRayZ delta post = {0} --> Result: {1}", sign * stepSize, res);
+                    Thread.Sleep(TimeSpan.FromMilliseconds(100));
+                }
+
+                if (restStepSize > 0)
+                {
+                    TimeoutSyncTask moveTask = new MoveMotorByDeltaTask(STEP_MOVE_TIMEOUT, this, 0, 0, 0, 0, sign * restStepSize);
+                    res = moveTask.execute();
+                    Logger.Info("MoveMotorByDeltaTask: XRayZ delta post = {0} --> Result: {1}", sign * restStepSize, res);
+                }
+            });
+            
         }
 
         private void buttonHome_Click(object sender, RoutedEventArgs e)
